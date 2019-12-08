@@ -3,17 +3,17 @@ package com.example.giaodienthongtin;
 import java.util.ArrayList;
 
 public class M_Chuong {
-    ArrayList<M_Link> chuong;
+    int  chuong;
 
-    public M_Chuong(ArrayList<M_Link> chuong) {
-        this.chuong = chuong;
-    }
-
-    public ArrayList<M_Link> getChuong() {
+    public int getChuong() {
         return chuong;
     }
 
-    public void setChuong(ArrayList<M_Link> chuong) {
+    public void setChuong(int chuong) {
+        this.chuong = chuong;
+    }
+
+    public M_Chuong(int chuong) {
         this.chuong = chuong;
     }
 }

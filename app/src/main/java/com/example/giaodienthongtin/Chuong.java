@@ -27,7 +27,7 @@ import java.util.ArrayList;
  */
 public class Chuong extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ArrayList<M_Chuong> list;
+    ArrayList<M_Chuong> list=new ArrayList<>();
     RecyclerView rcv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +35,11 @@ public class Chuong extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_chuong, container, false);
         rcv = view.findViewById(R.id.rcv);
+        list.add(new M_Chuong(1));
+        list.add(new M_Chuong(2));
+        Adapter_Chuong adapter = new Adapter_Chuong(getContext(),list);
+        rcv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rcv.setAdapter(adapter);
         return view;
     }
 

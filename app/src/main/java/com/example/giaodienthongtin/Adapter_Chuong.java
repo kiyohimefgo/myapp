@@ -1,6 +1,7 @@
 package com.example.giaodienthongtin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,12 @@ public class Adapter_Chuong extends RecyclerView.Adapter<Adapter_Chuong.ViewHold
     @Override
     public void onBindViewHolder(@NonNull Adapter_Chuong.ViewHolder holder, int position) {
         holder.tv.setText("Chương" +(position+1));
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                context.startActivity(new Intent(context,Page.class));
+            }
+        });
     }
 
     @Override
@@ -42,15 +49,20 @@ public class Adapter_Chuong extends RecyclerView.Adapter<Adapter_Chuong.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView tv;
+        ItemClickListener itemClickListener;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tv = itemView.findViewById(R.id.tv);
             itemView.setOnClickListener(this);
         }
 
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
         @Override
         public void onClick(View view) {
-
+            itemClickListener.onClick(view,getAdapterPosition(),false);
 
         }
     }
